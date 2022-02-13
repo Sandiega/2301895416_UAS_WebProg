@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use App;
 use Illuminate\Support\Facades\Route;
 
+
+
 class PageController extends Controller
 {
     public function input(Request $request)
@@ -112,7 +114,8 @@ class PageController extends Controller
 
     public function user_logout(Request $request){
         Auth::logout();
-        Session::flush();
+        
+        $request->session()->flush();
 
         return redirect('/success')->with('logout','Log Out Success!');
     }
