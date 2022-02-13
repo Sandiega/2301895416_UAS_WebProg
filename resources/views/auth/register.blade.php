@@ -10,15 +10,27 @@
                     <div class="row pt-4">
                       <div class="col">
                         <div class="form-group row">
-                            <label for="text" class="col-4 col-form-label">First Name:</label>
+                            <label for="text" class="col-4 col-form-label ">First Name:</label>
                             <div class="col-8">
-                              <input id="text" name="first_name" type="text" class="form-control" required="required">
+                              <input id="text" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" required="required">
+
+                              @error('first_name')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                              @enderror
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label for="text1" class="col-4 col-form-label">Last Name:</label>
+                            <label for="text1" class="col-4 col-form-label ">Last Name:</label>
                             <div class="col-8">
-                              <input id="text1" name="last_name" type="text" class="form-control" required="required">
+                              <input id="text1" name="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" required="required">
+
+                              @error('last_name')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                              @enderror
                             </div>
                           </div>
                           <div class="form-group row">
@@ -35,9 +47,15 @@
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label for="password" class="col-4 col-form-label">Password:</label>
+                            <label for="password" class="col-4 col-form-label ">Password:</label>
                             <div class="col-8">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" type="password" class="form-control  @error('password') is-invalid @enderror" name="password">
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                           </div>
                       </div>
@@ -45,13 +63,26 @@
                         <div class="form-group row">
                             <label for="text" class="col-4 col-form-label">Middle Name:</label>
                             <div class="col-8">
-                              <input id="text" name="middle_name" type="text" class="form-control">
+                              <input id="text" name="middle_name" type="text" class="form-control @error('middle_name') is-invalid @enderror">
+
+                              @error('middle_name')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                              @enderror
                             </div>
                           </div>
                           <div class="form-group row">
                             <label for="text1" class="col-4 col-form-label">Email Address:</label>
                             <div class="col-8">
-                              <input id="text1" name="email" type="text" class="form-control" required="required">
+                              <input id="text1" name="email" type="text" class="form-control @error('email') is-invalid @enderror" required="required">
+
+                              @error('email')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                              @enderror
+
                             </div>
                           </div>
                           <div class="form-group row">
@@ -66,7 +97,13 @@
                           <div class="form-group row">
                             <label for="image" class="col-4 col-form-label">Display Picture:</label>
                             <div class="col-8">
-                                <input type="file" name="image" value="">
+                                <input type="file" name="image" value="" class="@error('image') is-invalid @enderror">
+
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                           </div>
 

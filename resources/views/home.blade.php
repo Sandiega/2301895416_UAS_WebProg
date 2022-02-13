@@ -30,7 +30,7 @@
                     @foreach ($data as $d)
                   <tr>
                     <td>{{$d->author}}</td>
-                    <td><a href="/ebookdetail/{{$d->id}}">{{$d->title}}</a></td>
+                    <td><a href="/ebookdetail/{{$d->id}}/{{App::getlocale()}}">{{$d->title}}</a></td>
 
                   </tr>
                   @endforeach

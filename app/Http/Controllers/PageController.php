@@ -343,7 +343,7 @@ class PageController extends Controller
             $fk_role=2;
         }
         if(Auth::user()->middle_name != NULL ){
-            $modifby_name = Auth::user()->first_name +" "+Auth::user()->middle_name +" "+Auth::user()->last_name;
+            $modifby_name = Auth::user()->first_name ." ".Auth::user()->middle_name ." ".Auth::user()->last_name;
         }
         else{
             $modifby_name = Auth::user()->first_name ." ".Auth::user()->last_name;
