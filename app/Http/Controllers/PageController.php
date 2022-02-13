@@ -112,6 +112,7 @@ class PageController extends Controller
 
     public function user_logout(Request $request){
         Auth::logout();
+        Session::flush();
 
         return redirect('/success')->with('logout','Log Out Success!');
     }
@@ -224,15 +225,6 @@ class PageController extends Controller
 
     public function save(Request $request){
 
-        $pass = $request->password;
-        $flag_num =0;
-        for($i=0;$i<strlen($pass);$i++){
-            if(is_numeric($pass[$i])){
-                $flag_num++;
-            }
-
-        }
-        // dd($flag_num);
         if($request->middle_name == NULL){
 
 
