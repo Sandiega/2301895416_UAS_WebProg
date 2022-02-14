@@ -27,7 +27,7 @@
                     <div class="logo" style="margin:auto">
                         @if(Auth::check())
 
-                        <a class="navbar-brand" href="/home/{{App::getlocale()}}">
+                        <a class="navbar-brand" href="/home">
                             <h2 style="font-weight:bold">Amazing E-book</h2>
                         </a>
 
@@ -52,7 +52,7 @@
                                         <div class="bgauth" style="background-color: orange">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="/register">
-                                                    <span style="font-weight: bold">{{ __('Sign Up') }}</span>
+                                                    <span style="font-weight: bold">{{__('isi.Signup')}}</span>
                                                 </a>
                                             </li>
                                         </div>
@@ -61,7 +61,7 @@
                                         <li class="nav-item">
                                             <div class="bgauth ml-2" style="background-color: orange">
                                                 <a class="nav-link" href="/login">
-                                                    <span style="font-weight: bold">{{ __('Log In') }}</span>
+                                                    <span style="font-weight: bold">{{__('isi.Login')}}</span>
                                                 </a>
                                             </div>
 
@@ -73,7 +73,7 @@
                                             <a style="background-color: orange; text-decoration:none; color:black; padding:5px" href="/logout"
                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
-                                                <span style="font-weight: bold">{{ __('Logout') }}</span>
+                                                <span style="font-weight: bold">{{__('isi.Logout')}}</span>
                                             </a>
 
                                             <form id="logout-form" action="/logout" method="POST" class="d-none">
@@ -97,11 +97,11 @@
 
                 <div class="d-flex justify-content-around" style="width: 100%">
 
-                        <a href="/home/{{App::getlocale()}}"><span>Home</span></a>
-                        <a href="/cart/{{App::getlocale()}}"><span>Cart</span></a>
-                        <a href="/profile/{{App::getlocale()}}"><span>Profile</span></a>
+                        <a href="/home"><span>{{__('isi.Home')}}</span></a>
+                        <a href="/cart"><span>{{__('isi.Cart')}}</span></a>
+                        <a href="/profile"><span>{{__('isi.Profile')}}</span></a>
                         @if (Auth::user()->role_id == 1)
-                        <a href="/allAccount/{{App::getlocale()}}"><span>Account Maintenance</span></a>
+                        <a href="/allAccount"><span>{{__('isi.Account')}}</span></a>
                         @endif
 
                 </div>
@@ -109,9 +109,20 @@
             </div>
 
 
-            @endif
+    @endif
 
         @endif
+        @if(App::getLocale() == 'id')
+
+        <form action="/setlocale/en" method="get" class="pt-2">
+            <button type="submit" class="btn btn-primary">English</button>
+        </form>
+
+    @else
+        <form action="/setlocale/id" method="get" class="pt-2">
+            <button type="submit" class="btn btn-primary">Bahasa Indonesia</button>
+        </form>
+    @endif
         <main class="py-4" style="height:90vh">
             @yield('content')
         </main>

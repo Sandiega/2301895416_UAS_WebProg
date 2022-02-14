@@ -2,22 +2,6 @@
 
 @section('content')
 
-@foreach ($data as $d)
-@if(App::getLocale() == 'id')
-
-                    <form action="/ebookdetail/{{$d->id}}/en" method="get" class="pt-2">
-                        {{-- <input type="hidden" name="lang" value="{{App::getLocale()}}"> --}}
-                        <button type="submit" class="btn btn-primary">English</button>
-                    </form>
-
-                @else
-                    <form action="/ebookdetail/{{$d->id}}/id" method="get" class="pt-2">
-                        {{-- <input type="hidden" name="lang" value="{{App::getLocale()}}"> --}}
-                        <button type="submit" class="btn btn-primary">Bahasa Indonesia</button>
-                    </form>
-                @endif
-@endforeach
-
 <div class="container">
 
     <div class="row justify-content-center">

@@ -1,20 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@if(App::getLocale() == 'id')
-
-                    <form action="/cart/en" method="get" class="pt-2">
-                        {{-- <input type="hidden" name="lang" value="{{App::getLocale()}}"> --}}
-                        <button type="submit" class="btn btn-primary">English</button>
-                    </form>
-
-                @else
-                    <form action="/cart/id" method="get" class="pt-2">
-                        {{-- <input type="hidden" name="lang" value="{{App::getLocale()}}"> --}}
-                        <button type="submit" class="btn btn-primary">Bahasa Indonesia</button>
-                    </form>
-                @endif
-
 
 <div class="container">
     <div class="row justify-content-center">

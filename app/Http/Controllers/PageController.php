@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App;
-use Illuminate\Support\Facades\Route;
-
+use Session;
 
 
 class PageController extends Controller
@@ -95,26 +93,24 @@ class PageController extends Controller
 
 
 
-        $lang = App::getlocale();
-
 
         if(Auth::attempt($credentials)){
 
             if(Auth::user()->delete_flag == 1){
                 Auth::logout();
 
-                return redirect('login');
+                return redirect('/login');
             }
 
-            return redirect('/home/en');
+            return redirect('/home');
         }
 
-        return redirect('login');
+        return redirect('/login');
     }
 
     public function user_logout(Request $request){
         Auth::logout();
-        
+
         $request->session()->flush();
 
         return redirect('/success')->with('logout','Log Out Success!');
@@ -127,29 +123,10 @@ class PageController extends Controller
     }
 
 
-    public function show_ebook2($lang){
-        $data = DB::table('ebook')->get();
-
-        App::setlocale($lang);
-
-
-        return view('home',compact('data'));
-     }
-
     public function ebook_detail($id){
         $data = DB::table('ebook')
         ->where('ebook.id',$id)
         ->get();
-
-        return view('ebookdetail',compact('data'));
-    }
-
-    public function ebook_detail2($id,$lang){
-        $data = DB::table('ebook')
-        ->where('ebook.id',$id)
-        ->get();
-
-        App::setlocale($lang);
 
         return view('ebookdetail',compact('data'));
     }
@@ -174,15 +151,6 @@ class PageController extends Controller
         ->get();
 
 
-
-        return view('/cart',compact('data'));
-    }
-
-    public function cart2($lang){
-        $data=orderModel::where('order.account_id','=',Auth::user()->id)
-        ->get();
-
-        App::setlocale($lang);
 
         return view('/cart',compact('data'));
     }
@@ -212,16 +180,6 @@ class PageController extends Controller
 
         $data=DB::table('users')->where('users.id',Auth::user()->id)
         ->get();
-
-        return view('/profile',compact('data'));
-    }
-
-    public function profile2($lang){
-
-        $data=DB::table('users')->where('users.id',Auth::user()->id)
-        ->get();
-
-        App::setlocale($lang);
 
         return view('/profile',compact('data'));
     }
@@ -300,15 +258,6 @@ class PageController extends Controller
         return view('manageaccount',compact('data'));
     }
 
-    public function manageacc2($lang){
-        $data=User::where('users.id','!=',Auth::user()->id)
-        ->where('delete_flag',NULL)
-        ->get();
-
-        App::setLocale($lang);
-
-        return view('manageaccount',compact('data'));
-    }
 
     public function deleteacc($id){
         DB::table('users')->where('users.id',$id)
@@ -356,22 +305,8 @@ class PageController extends Controller
         return redirect('/allAccount');
     }
 
-    public function change_lang(){
-
-        App::setlocale('id');
-
-        if(App::getLocale() == 'id'){
-            App::setlocale(session('en'));
-        }
-        else{
-            App::setlocale(session('id'));
-        }
-
-        dd(Route::current());
-
-
+    public function change_lang($lang){
+        Session::put('locale',$lang);
         return redirect()->back();
     }
-
-
 }

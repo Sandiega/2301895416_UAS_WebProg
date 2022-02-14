@@ -1,19 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if(App::getLocale() == 'id')
 
-                    <form action="/profile/en" method="get" class="pt-2">
-                        {{-- <input type="hidden" name="lang" value="{{App::getLocale()}}"> --}}
-                        <button type="submit" class="btn btn-primary">English</button>
-                    </form>
-
-                @else
-                    <form action="/profile/id" method="get" class="pt-2">
-                        {{-- <input type="hidden" name="lang" value="{{App::getLocale()}}"> --}}
-                        <button type="submit" class="btn btn-primary">Bahasa Indonesia</button>
-                    </form>
-                @endif
 
             <form method="POST" action="/save" enctype="multipart/form-data">
                 @csrf
@@ -54,20 +42,20 @@
                                 @if($d->gender_id == 1)
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input name="gender" id="radio_0" type="radio" class="custom-control-input" value="Male" required="required" checked>
-                                    <label for="radio_0" class="custom-control-label">Male</label>
+                                    <label for="radio_0" class="custom-control-label">{{__('isi.Male')}}</label>
                                   </div>
                                   <div class="custom-control custom-radio custom-control-inline">
                                     <input name="gender" id="radio_1" type="radio" class="custom-control-input" value="Female">
-                                    <label for="radio_1" class="custom-control-label">Female</label>
+                                    <label for="radio_1" class="custom-control-label">{{__('isi.Female')}}</label>
                                   </div>
                                 @else
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input name="gender" id="radio_0" type="radio" class="custom-control-input" value="Male">
-                                    <label for="radio_0" class="custom-control-label">Male</label>
+                                    <label for="radio_0" class="custom-control-label">{{__('isi.Male')}}</label>
                                   </div>
                                   <div class="custom-control custom-radio custom-control-inline">
                                     <input name="gender" id="radio_1" type="radio" class="custom-control-input" value="Female" required="required" checked>
-                                    <label for="radio_1" class="custom-control-label">Female</label>
+                                    <label for="radio_1" class="custom-control-label">{{__('isi.Female')}}</label>
                                   </div>
                                 @endif
 
@@ -147,7 +135,7 @@
 
                   <div class="form-group row">
                     <div class="col text-center">
-                      <button name="submit" type="submit" class="btn btn-warning" style="padding-left: 20px; padding-right:20px">Save</button>
+                      <button name="submit" type="submit" class="btn btn-warning" style="padding-left: 20px; padding-right:20px">{{__('isi.Save')}}</button>
                     </div>
                 </div>
             </div>

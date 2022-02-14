@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\guestMiddleware;
+use App\Http\Middleware\localeMiddleware;
 use App\Http\Middleware\userMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'guestlock' => guestMiddleware::class,
         'userlock' => userMiddleware::class,
+        'lang' => localeMiddleware::class,
     ];
 }
